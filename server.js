@@ -16,7 +16,6 @@ app.get("/", function (req, res) {
 });
 
 
-// your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
@@ -26,9 +25,11 @@ app.get("/api", async function(req,res)
   //var name = req.params.name;
   try
   {
-  const name = await req.query.name;
+  var name = await req.query.name;
   //if (typeof name !== 'string' )
-  if(! (/^[a-z]+$/i.test(name)))
+  console.log(name);
+  var regex = /\S/ ;
+  if(!regex.test(name))
   {
     res.json({error : "Error. Please enter name including only alphabets and then try again!"});
     return;
